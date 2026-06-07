@@ -1,0 +1,18 @@
+/* ================================================================
+   SpendWise - Global Stylesheet
+   Color: Purple/Indigo | Glassmorphism | Bootstrap 5
+   TODO: Step 6 - Full CSS implementation
+   ================================================================ */
+
+:root {
+    --primary:    #6366f1;
+    --secondary:  #7c3aed;
+    --accent:     #06b6d4;
+    --success:    #10b981;
+    --warning:    #f59e0b;
+    --danger:     #ef4444;
+    --light:      #f8fafc;
+    --dark:       #1e293b;
+    --radius:     12px;
+    --shadow:     0 4px 20px rgba(99,102,241,0.1);
+}
