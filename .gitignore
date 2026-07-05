@@ -1,0 +1,43 @@
+# ================================================================
+# SpendWise .gitignore
+# ================================================================
+
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+*.classpath
+*.project
+.settings/
+
+# Spring Boot
+HELP.md
+*.jar
+*.war
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env & Secrets
+.env
+application-local.properties
+application-secret.properties
+
+# Uploads
+uploads/
+
+# Node (if used)
+node_modules/

@@ -1,5 +1,1 @@
-package com.spendwise.repository;
-
-// TODO: Step 4/5 - NotificationRepository
-public interface NotificationRepository {
-}
+// NotificationRepository.java - To be implemented in Prompt 04

@@ -2,10 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- ============================================================ -->
+    <!-- Parent - Spring Boot -->
+    <!-- ============================================================ -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -13,31 +16,50 @@
         <relativePath/>
     </parent>
 
+    <!-- ============================================================ -->
+    <!-- Project Info -->
+    <!-- ============================================================ -->
     <groupId>com.spendwise</groupId>
     <artifactId>spendwise</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>SpendWise</name>
-    <description>Student Budget and Expense Management System</description>
+    <description>Personal Finance and Budget Management System</description>
 
+    <!-- ============================================================ -->
+    <!-- Java Version -->
+    <!-- ============================================================ -->
     <properties>
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <!-- ============================================================ -->
+    <!-- Dependencies -->
+    <!-- ============================================================ -->
     <dependencies>
 
-        <!-- Spring Boot Web (Tomcat + MVC) -->
+        <!-- ======================================================== -->
+        <!-- SPRING BOOT CORE -->
+        <!-- ======================================================== -->
+
+        <!-- Web MVC - Controllers, REST APIs, Thymeleaf serving -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Thymeleaf Template Engine -->
+        <!-- Thymeleaf - Server-side HTML templating -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Spring Security - Authentication & Authorization -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <!-- Thymeleaf + Spring Security integration -->
@@ -46,17 +68,29 @@
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
 
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-
-        <!-- Spring Data JPA + Hibernate -->
+        <!-- Spring Data JPA - Database ORM -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- Validation - Bean validation (@NotNull, @Email etc.) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- DevTools - Hot reload during development -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- ======================================================== -->
+        <!-- DATABASE -->
+        <!-- ======================================================== -->
 
         <!-- MySQL Driver -->
         <dependency>
@@ -65,46 +99,65 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Bean Validation -->
+        <!-- ======================================================== -->
+        <!-- SECURITY -->
+        <!-- ======================================================== -->
+
+        <!-- JWT - JSON Web Token generation & validation -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.12.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.12.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.12.5</version>
+            <scope>runtime</scope>
         </dependency>
 
-        <!-- Jackson JSON -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
+        <!-- ======================================================== -->
+        <!-- UTILITIES -->
+        <!-- ======================================================== -->
 
-        <!-- Jackson Java 8 Date/Time -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-        </dependency>
-
-        <!-- Lombok -->
+        <!-- Lombok - Reduce boilerplate (@Getter, @Setter etc.) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- DevTools -->
+        <!-- ModelMapper - Object mapping (Entity <-> DTO) -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.0</version>
         </dependency>
 
-        <!-- Testing -->
+        <!-- Apache Commons Lang - String utilities -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- ======================================================== -->
+        <!-- TESTING -->
+        <!-- ======================================================== -->
+
+        <!-- Spring Boot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring Security Test -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -113,6 +166,9 @@
 
     </dependencies>
 
+    <!-- ============================================================ -->
+    <!-- Build -->
+    <!-- ============================================================ -->
     <build>
         <plugins>
             <plugin>
@@ -125,20 +181,6 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>

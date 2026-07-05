@@ -1,58 +1,47 @@
-# SpendWise — Student Budget & Expense Management System
+# SpendWise 💰
+**Personal Finance & Budget Management System**
 
 ## Tech Stack
-- Java 21 + Spring Boot 3.2.5
-- MySQL 8.0
-- Thymeleaf + Bootstrap 5
-- Chart.js | Spring Security
+- **Backend**: Java 21, Spring Boot 3, Spring Security, Spring Data JPA
+- **Frontend**: HTML5, Tailwind CSS, Vanilla JavaScript, Chart.js
+- **Database**: MySQL
+- **Build**: Maven
 
-## Quick Start
+## Getting Started
+
+### Prerequisites
+- Java 21
+- Maven 3.9+
+- MySQL 8.0+
+
+### Database Setup
+```sql
+CREATE DATABASE spendwise_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+Run SQL files in order:
+```
+src/main/resources/db/01_schema.sql
+src/main/resources/db/02_sample_data.sql
+src/main/resources/db/03_views.sql
+```
+
+### Configuration
+Edit `src/main/resources/application.properties`:
+```properties
+spring.datasource.username=YOUR_DB_USER
+spring.datasource.password=YOUR_DB_PASSWORD
+```
+
+### Run
 ```bash
-# 1. Setup database
-mysql -u root -p < database/schema.sql
-mysql -u root -p < database/seed.sql
-
-# 2. Update credentials in src/main/resources/application.properties
-
-# 3. Run
 mvn spring-boot:run
-
-# 4. Open
-http://localhost:8080/login
 ```
+Open: http://localhost:8080
 
-## Project Structure
-```
-spendwise/
-├── src/main/java/com/spendwise/
-│   ├── SpendwiseApplication.java
-│   ├── config/         SecurityConfig, WebConfig
-│   ├── controller/     Auth, Dashboard, Expense, Budget,
-│   │                   Analytics, University, Goal, Profile
-│   ├── service/        Auth, Expense, Budget, Analytics,
-│   │                   University, Goal, Alert
-│   ├── repository/     User, Expense, Budget, Category,
-│   │                   UniversityExpense, Goal, Notification
-│   ├── model/          User, Expense, Budget, Category,
-│   │                   UniversityExpense, Goal, Notification
-│   ├── dto/            ApiResponse, LoginRequest, RegisterRequest,
-│   │                   ExpenseDTO, BudgetDTO, DashboardDTO, AnalyticsDTO
-│   └── exception/      GlobalExceptionHandler, ResourceNotFoundException
-├── src/main/resources/
-│   ├── templates/      auth/, dashboard/, expense/, budget/,
-│   │                   analytics/, university/, goals/, profile/, fragments/
-│   ├── static/
-│   │   ├── css/        style.css + page-specific CSS files
-│   │   ├── js/         page-specific JS files + utils.js
-│   │   └── images/
-│   └── application.properties
-├── database/
-│   ├── schema.sql
-│   ├── seed.sql
-│   └── queries.sql
-└── pom.xml
-```
-
-## Demo Login (after seed.sql)
-- Email: arafat@email.com
-- Password: password123
+## Development Phases
+- ✅ Phase 1: Project Architecture
+- ✅ Phase 2: Database Design
+- ✅ Phase 3: Spring Boot Setup
+- ⏳ Phase 4: Entity Layer
+- ⏳ Phase 5: Security & JWT
+- ...and more

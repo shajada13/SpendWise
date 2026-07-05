@@ -1,5 +1,1 @@
-package com.spendwise.service;
-
-// TODO: Step 4/5 - AnalyticsService
-public class AnalyticsService {
-}
+// AnalyticsService.java - To be implemented later

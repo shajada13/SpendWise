@@ -1,5 +1,1 @@
-package com.spendwise.controller;
-
-// TODO: Step 4/5 - ProfileController
-public class ProfileController {
-}
+// ProfileController.java - To be implemented later

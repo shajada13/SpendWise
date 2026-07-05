@@ -1,5 +1,1 @@
-package com.spendwise.repository;
-
-// TODO: Step 4/5 - BudgetRepository
-public interface BudgetRepository {
-}
+// BudgetRepository.java - To be implemented in Prompt 04

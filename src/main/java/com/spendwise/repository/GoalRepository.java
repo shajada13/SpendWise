@@ -1,5 +1,1 @@
-package com.spendwise.repository;
-
-// TODO: Step 4/5 - GoalRepository
-public interface GoalRepository {
-}
+// GoalRepository.java - To be implemented in Prompt 04

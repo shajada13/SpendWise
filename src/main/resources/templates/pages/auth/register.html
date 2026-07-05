@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpendWise — Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" th:href="@{/static/css/auth/auth.css}" href="../../static/css/auth/auth.css"/>
+</head>
+<body>
+
+<div class="auth-wrapper">
+  <div class="auth-container" style="max-width:1100px">
+
+    <!-- ===================== LEFT SIDEBAR ===================== -->
+    <aside class="auth-sidebar">
+      <div class="auth-logo">
+        <div class="auth-logo-icon"><i class="fa-solid fa-wallet"></i></div>
+        <div>
+          <div class="auth-logo-text">Spend<span>Wise</span></div>
+          <div class="auth-tagline">Manage today, secure tomorrow.</div>
+        </div>
+      </div>
+
+      <div class="auth-wallet-img">💰</div>
+
+      <div>
+        <div class="auth-sidebar-heading">Join SpendWise!</div>
+        <div class="auth-sidebar-sub" style="margin-top:8px">
+          Take control of your finances and build better spending habits.
+        </div>
+      </div>
+
+      <div class="auth-features">
+        <div class="auth-feature">
+          <div class="auth-feature-icon purple"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <div class="auth-feature-title">Smart Analytics</div>
+            <div class="auth-feature-desc">Visual insights on your spending</div>
+          </div>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon green"><i class="fa-solid fa-piggy-bank"></i></div>
+          <div>
+            <div class="auth-feature-title">Savings Goals</div>
+            <div class="auth-feature-desc">Track progress toward your goals</div>
+          </div>
+        </div>
+        <div class="auth-feature">
+          <div class="auth-feature-icon orange"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <div class="auth-feature-title">Student Friendly</div>
+            <div class="auth-feature-desc">Built for university students</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-security">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <div class="auth-security-text">Your data is safe with us</div>
+          <div class="auth-security-sub">We use advanced encryption to protect your information.</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===================== REGISTER FORM ===================== -->
+    <div class="auth-form-panel">
+
+      <div id="alert-container"></div>
+
+      <h1 class="auth-form-title">Create New Account</h1>
+      <p class="auth-form-sub">Join SpendWise and take control of your finances.</p>
+
+      <form id="register-form" th:action="@{/api/auth/register}" method="post" novalidate>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" th:if="${_csrf}"/>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="fullName">Full Name</label>
+          <div class="input-wrapper">
+            <span class="input-icon-left"><i class="fa-regular fa-user"></i></span>
+            <input class="form-input" type="text" id="fullName" name="fullName"
+                   placeholder="Enter your full name" autocomplete="name" required/>
+          </div>
+          <div class="field-error" id="fullName-error">
+            <i class="fa-solid fa-circle-exclamation"></i><span></span>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-icon-left"><i class="fa-regular fa-envelope"></i></span>
+            <input class="form-input" type="email" id="email" name="email"
+                   placeholder="Enter your email" autocomplete="email" required/>
+          </div>
+          <div class="field-error" id="email-error">
+            <i class="fa-solid fa-circle-exclamation"></i><span></span>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon-left"><i class="fa-solid fa-lock"></i></span>
+            <input class="form-input" type="password" id="password" name="password"
+                   placeholder="Create a password" autocomplete="new-password" required/>
+            <button type="button" class="input-icon-right" id="toggle-password"
+                    onclick="togglePassword('password','toggle-password')" aria-label="Toggle password">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <div class="field-error" id="password-error">
+            <i class="fa-solid fa-circle-exclamation"></i><span></span>
+          </div>
+          <!-- Strength bars -->
+          <div class="password-strength" id="strength-container" style="display:none">
+            <div class="strength-bars">
+              <div class="strength-bar" id="bar-1"></div>
+              <div class="strength-bar" id="bar-2"></div>
+              <div class="strength-bar" id="bar-3"></div>
+            </div>
+            <div class="strength-text" id="strength-text"></div>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon-left"><i class="fa-solid fa-lock"></i></span>
+            <input class="form-input" type="password" id="confirmPassword" name="confirmPassword"
+                   placeholder="Confirm your password" autocomplete="new-password" required/>
+            <button type="button" class="input-icon-right" id="toggle-confirm"
+                    onclick="togglePassword('confirmPassword','toggle-confirm')" aria-label="Toggle confirm password">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <div class="field-error" id="confirmPassword-error">
+            <i class="fa-solid fa-circle-exclamation"></i><span></span>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="form-group" style="margin-bottom:20px">
+          <label class="form-checkbox-label" style="align-items:flex-start;gap:10px">
+            <input class="form-checkbox" type="checkbox" id="terms" name="terms" style="margin-top:2px"/>
+            <span class="terms-text">
+              I agree to the
+              <a href="/terms">Terms &amp; Conditions</a>
+              and <a href="/privacy">Privacy Policy</a>
+            </span>
+          </label>
+          <div class="field-error" id="terms-error" style="margin-top:5px">
+            <i class="fa-solid fa-circle-exclamation"></i><span></span>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-primary" id="register-btn">
+          <span class="btn-text">Sign Up</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </form>
+
+      <div class="auth-divider">
+        <div class="auth-divider-line"></div>
+        <span class="auth-divider-text">or continue with</span>
+        <div class="auth-divider-line"></div>
+      </div>
+
+      <div class="social-buttons">
+        <button class="btn-social" onclick="socialSignup('google')">
+          <img src="https://www.google.com/favicon.ico" alt="Google"/>
+          Google
+        </button>
+        <button class="btn-social" onclick="socialSignup('facebook')">
+          <i class="fa-brands fa-facebook" style="color:#1877F2;font-size:18px"></i>
+          Facebook
+        </button>
+      </div>
+
+      <div class="auth-switch">
+        Already have an account? <a href="/login">Login</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script th:src="@{/static/js/auth/auth-utils.js}" src="../../static/js/auth/auth-utils.js"></script>
+<script th:src="@{/static/js/auth/register.js}"   src="../../static/js/auth/register.js"></script>
+</body>
+</html>
