@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main :: layout(~{::content}, 'dashboard', 'Dashboard')}">
+<body>
+
+<th:block th:fragment="content">
+
+<div class="dashboard-header">
+    <div>
+        <h2>Dashboard</h2>
+        <p>Welcome back! Here's your financial overview.</p>
+    </div>
+    <button class="btn btn-secondary">
+        <span data-lucide="calendar"></span> May 1 - May 31, 2024
+    </button>
+</div>
+
+<!-- Hero Statistics -->
+<div class="stats-grid">
+    <div class="card stat-card">
+        <div class="stat-icon"><span data-lucide="wallet"></span></div>
+        <span class="text-secondary">Total Balance</span>
+        <span class="stat-value">৳ 12,540.00</span>
+        <span class="stat-change positive">↑ 12.5% from last month</span>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon" style="background: var(--color-success-light); color: var(--color-success);"><span data-lucide="trending-up"></span></div>
+        <span class="text-secondary">Monthly Income</span>
+        <span class="stat-value">৳ 18,000.00</span>
+        <span class="stat-change positive">↑ 0.3% from last month</span>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon" style="background: var(--color-danger-light); color: var(--color-danger);"><span data-lucide="receipt"></span></div>
+        <span class="text-secondary">Monthly Expense</span>
+        <span class="stat-value">৳ 5,460.00</span>
+        <span class="stat-change negative">↑ 15.7% from last month</span>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon" style="background: var(--color-warning-light); color: var(--color-warning);"><span data-lucide="piggy-bank"></span></div>
+        <span class="text-secondary">Remaining Budget</span>
+        <span class="stat-value">৳ 6,540.00</span>
+        <span class="stat-change positive">↓ 10.2% from last month</span>
+    </div>
+
+    <div class="card stat-card">
+        <div class="stat-icon"><span data-lucide="clock"></span></div>
+        <span class="text-secondary">Today's Spending</span>
+        <span class="stat-value">৳ 320.00</span>
+        <span class="stat-change negative">↑ 5.3% from yesterday</span>
+    </div>
+</div>
+
+<!-- Charts -->
+<div class="charts-grid">
+    <div class="card">
+        <div class="card-header">
+            <h4>Monthly Expenses Overview</h4>
+        </div>
+        <canvas id="monthlyOverviewChart" height="260"></canvas>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Expenses by Category</h4>
+        </div>
+        <canvas id="categoryPieChart" height="260"></canvas>
+    </div>
+</div>
+
+<!-- Widgets -->
+<div class="widgets-grid">
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Recent Transactions</h4>
+            <a th:href="@{/expenses}" style="font-size: var(--font-size-sm);">View All</a>
+        </div>
+        <div class="empty-state" style="padding: 32px 0;">
+            <span data-lucide="inbox" style="font-size: 32px; color: var(--color-text-muted);"></span>
+            <h4>No transactions yet</h4>
+            <p class="text-muted">Your recent transactions will appear here.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Budget Status</h4>
+        </div>
+        <p class="text-secondary">65% of monthly budget used</p>
+        <div class="progress-track" style="margin: 12px 0;">
+            <div class="progress-fill" style="width: 65%;"></div>
+        </div>
+        <span class="text-muted">৳ 6,540 left</span>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Savings Goal</h4>
+            <span class="badge badge-primary">50%</span>
+        </div>
+        <p class="text-secondary">Saving for New Laptop</p>
+        <div class="progress-track" style="margin: 12px 0;">
+            <div class="progress-fill success" style="width: 50%;"></div>
+        </div>
+        <span class="text-muted">৳ 15,000 of ৳ 30,000</span>
+    </div>
+
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Chart === 'undefined') { return; }
+
+        new Chart(document.getElementById('monthlyOverviewChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [
+                    { label: 'Income', data: [4000, 4200, 3800, 4500, 4100], backgroundColor: '#22C55E' },
+                    { label: 'Expenses', data: [2400, 2600, 2100, 2800, 2348], backgroundColor: '#EF4444' }
+                ]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+        });
+
+        new Chart(document.getElementById('categoryPieChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Food & Drinks', 'Transport', 'Education', 'Shopping', 'Entertainment', 'Others'],
+                datasets: [{
+                    data: [43, 18, 14, 12, 7, 6],
+                    backgroundColor: ['#2563EB', '#F59E0B', '#22C55E', '#A855F7', '#EF4444', '#94A3B8']
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+        });
+    });
+    /*]]>*/
+</script>
+
+</th:block>
+
+</body>
+</html>

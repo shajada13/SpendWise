@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--
+  Usage:
+  th:replace="~{fragments/modal :: modal('addExpenseModal', 'Add Expense')}"
+  Content for the body should be inserted by the consuming page via th:block.
+-->
+<div th:fragment="modal(id, title)" class="modal fade" th:id="${id}" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 th:text="${title}">Modal Title</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted">Modal content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

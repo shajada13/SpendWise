@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<header th:fragment="header" class="topbar">
+
+    <div class="topbar-search">
+        <div class="input-group">
+            <span data-lucide="search"></span>
+            <input type="text" placeholder="Search transactions, categories..."/>
+        </div>
+    </div>
+
+    <div class="topbar-actions">
+        <div class="topbar-icon-btn" data-dropdown-trigger="notificationMenu">
+            <span data-lucide="bell"></span>
+            <span class="dot"></span>
+        </div>
+
+        <div class="user-menu" data-dropdown-trigger="userMenu">
+            <img src="/images/avatars/default-avatar.svg" alt="User avatar"
+                 th:src="@{/images/avatars/default-avatar.svg}"/>
+            <div>
+                <div class="user-name">Ahik Rahman</div>
+                <div class="user-role">Student</div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+</body>
+</html>

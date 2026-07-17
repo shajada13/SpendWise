@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main :: layout(~{::content}, 'reports', 'Reports')}">
+<body>
+
+<th:block th:fragment="content">
+
+<div th:replace="~{fragments/breadcrumb :: breadcrumb('Dashboard', 'Reports')}"></div>
+
+<div class="dashboard-header">
+    <h2>Reports</h2>
+    <div class="d-flex gap-3">
+        <button class="btn btn-secondary"><span data-lucide="file-text"></span> Export PDF</button>
+        <button class="btn btn-secondary"><span data-lucide="file-spreadsheet"></span> Export Excel</button>
+    </div>
+</div>
+
+<div class="stats-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
+    <div class="card stat-card">
+        <span class="text-secondary">Total Income</span>
+        <span class="stat-value">৳ 18,000.00</span>
+    </div>
+    <div class="card stat-card">
+        <span class="text-secondary">Total Expenses</span>
+        <span class="stat-value">৳ 5,460.00</span>
+    </div>
+    <div class="card stat-card">
+        <span class="text-secondary">Total Savings</span>
+        <span class="stat-value">৳ 12,540.00</span>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header"><h4>Report Summary</h4></div>
+    <p>You saved 69% of your income this month. Your biggest expense was Food & Drinks (43%).</p>
+</div>
+
+</th:block>
+
+</body>
+</html>

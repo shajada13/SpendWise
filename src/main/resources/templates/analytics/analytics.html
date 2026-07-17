@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main :: layout(~{::content}, 'analytics', 'Analytics')}">
+<body>
+
+<th:block th:fragment="content">
+
+<div th:replace="~{fragments/breadcrumb :: breadcrumb('Dashboard', 'Analytics')}"></div>
+
+<div class="dashboard-header">
+    <h2>Analytics</h2>
+    <select class="form-control" style="width: auto;">
+        <option>This Month</option>
+        <option>Last Month</option>
+        <option>This Year</option>
+    </select>
+</div>
+
+<div class="charts-grid">
+    <div class="card">
+        <div class="card-header"><h4>Top Categories</h4></div>
+        <canvas id="topCategoriesChart" height="260"></canvas>
+    </div>
+    <div class="card">
+        <div class="card-header"><h4>Monthly Comparison</h4></div>
+        <canvas id="monthlyComparisonChart" height="260"></canvas>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Chart === 'undefined') { return; }
+
+        new Chart(document.getElementById('topCategoriesChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Food & Drinks', 'Transport', 'Education', 'Shopping', 'Entertainment', 'Others'],
+                datasets: [{ data: [43, 18, 14, 12, 7, 6], backgroundColor: ['#2563EB', '#F59E0B', '#22C55E', '#A855F7', '#EF4444', '#94A3B8'] }]
+            }
+        });
+
+        new Chart(document.getElementById('monthlyComparisonChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [
+                    { label: 'Income', data: [4000, 4200, 3800, 4500, 4100], borderColor: '#22C55E', tension: 0.4 },
+                    { label: 'Expenses', data: [2400, 2600, 2100, 2800, 2348], borderColor: '#EF4444', tension: 0.4 }
+                ]
+            }
+        });
+    });
+    /*]]>*/
+</script>
+
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/auth :: layout(~{::content}, 'Create Account')}">
+<body>
+
+<th:block th:fragment="content">
+<div class="auth-page">
+    <div class="auth-card" style="max-width: 480px;">
+
+        <div class="auth-brand">
+            <img th:src="@{/images/logo/logo-mark.svg}" width="32" height="32" alt="SpendWise"/>
+            <span>SpendWise</span>
+        </div>
+
+        <h2>Create Your Account</h2>
+        <p style="margin-top:4px;">Join SpendWise and manage your finances</p>
+
+        <form th:action="@{/register}" method="post" data-validate style="margin-top: 24px;">
+
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <div class="input-group">
+                    <span data-lucide="user"></span>
+                    <input type="text" name="fullName" required placeholder="Ahik Rahman"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Student ID</label>
+                <div class="input-group">
+                    <span data-lucide="hash"></span>
+                    <input type="text" name="studentId" required placeholder="2001034"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">University</label>
+                <div class="input-group">
+                    <span data-lucide="school"></span>
+                    <input type="text" name="university" required placeholder="Daffodil International University"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <div class="input-group">
+                    <span data-lucide="mail"></span>
+                    <input type="email" name="email" required placeholder="you@university.edu"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <span data-lucide="lock"></span>
+                    <input type="password" name="password" required placeholder="••••••••"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <div class="input-group">
+                    <span data-lucide="lock"></span>
+                    <input type="password" name="confirmPassword" required placeholder="••••••••"/>
+                </div>
+            </div>
+
+            <div class="form-check" style="margin-bottom: 20px;">
+                <input type="checkbox" name="agreeTerms" required/>
+                <span>I agree to the <a th:href="@{/terms}">Terms of Service</a> and <a th:href="@{/privacy}">Privacy Policy</a></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Create Account</button>
+        </form>
+
+        <p style="text-align:center; margin-top: 24px; font-size: var(--font-size-sm);">
+            Already have an account? <a th:href="@{/login}">Log in</a>
+        </p>
+
+    </div>
+</div>
+</th:block>
+
+</body>
+</html>

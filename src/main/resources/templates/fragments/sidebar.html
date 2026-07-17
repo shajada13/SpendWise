@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<aside th:fragment="sidebar(active)" class="sidebar">
+
+    <div class="sidebar-brand">
+        <img src="/images/logo/logo-mark.svg" alt="SpendWise" width="32" height="32"
+             th:src="@{/images/logo/logo-mark.svg}"/>
+        <span>SpendWise</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <a th:href="@{/dashboard}" class="nav-item" th:classappend="${active == 'dashboard'} ? 'active'">
+            <span data-lucide="layout-dashboard"></span> Dashboard
+        </a>
+        <a th:href="@{/expenses}" class="nav-item" th:classappend="${active == 'expenses'} ? 'active'">
+            <span data-lucide="receipt"></span> Expenses
+        </a>
+        <a th:href="@{/income}" class="nav-item" th:classappend="${active == 'income'} ? 'active'">
+            <span data-lucide="wallet"></span> Income
+        </a>
+        <a th:href="@{/budget}" class="nav-item" th:classappend="${active == 'budget'} ? 'active'">
+            <span data-lucide="pie-chart"></span> Budget
+        </a>
+        <a th:href="@{/savings}" class="nav-item" th:classappend="${active == 'savings'} ? 'active'">
+            <span data-lucide="target"></span> Savings Goals
+        </a>
+        <a th:href="@{/analytics}" class="nav-item" th:classappend="${active == 'analytics'} ? 'active'">
+            <span data-lucide="bar-chart-2"></span> Analytics
+        </a>
+        <a th:href="@{/reports}" class="nav-item" th:classappend="${active == 'reports'} ? 'active'">
+            <span data-lucide="file-text"></span> Reports
+        </a>
+        <a th:href="@{/profile}" class="nav-item" th:classappend="${active == 'profile'} ? 'active'">
+            <span data-lucide="user"></span> Profile
+        </a>
+        <a th:href="@{/settings}" class="nav-item" th:classappend="${active == 'settings'} ? 'active'">
+            <span data-lucide="settings"></span> Settings
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="sidebar-upgrade">
+            <strong>Upgrade to Pro</strong>
+            <p>Unlock exclusive features and insights.</p>
+            <button class="btn btn-primary btn-sm btn-block" style="background:#fff;color:var(--color-primary);">Upgrade Now</button>
+        </div>
+        <a th:href="@{/logout}" class="nav-item">
+            <span data-lucide="log-out"></span> Logout
+        </a>
+    </div>
+
+</aside>
+
+</body>
+</html>

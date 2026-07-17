@@ -1,43 +1,35 @@
-# ================================================================
-# SpendWise .gitignore
-# ================================================================
-
-# Maven
+HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-# IDE
+### IntelliJ IDEA ###
 .idea/
 *.iws
 *.iml
 *.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### VS Code ###
 .vscode/
-*.classpath
-*.project
-.settings/
 
-# Spring Boot
-HELP.md
-*.jar
-*.war
-
-# Logs
-logs/
-*.log
-
-# OS
+### macOS / OS ###
 .DS_Store
 Thumbs.db
 
-# Env & Secrets
-.env
-application-local.properties
-application-secret.properties
-
-# Uploads
+### Application ###
+src/main/resources/application-local.properties
 uploads/
+*.log
 
-# Node (if used)
-node_modules/
+### Environment ###
+.env

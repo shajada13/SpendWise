@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main :: layout(~{::content}, 'income', 'Income')}">
+<body>
+
+<th:block th:fragment="content">
+
+<div th:replace="~{fragments/breadcrumb :: breadcrumb('Dashboard', 'Income')}"></div>
+
+<div class="dashboard-header">
+    <h2>Income</h2>
+    <a th:href="@{/income/add}" class="btn btn-primary">
+        <span data-lucide="plus"></span> Add Income
+    </a>
+</div>
+
+<div class="stats-grid" style="grid-template-columns: repeat(3,1fr); margin-bottom: 24px;">
+    <div class="card stat-card">
+        <span class="text-secondary">Total Income</span>
+        <span class="stat-value">৳ 18,000.00</span>
+    </div>
+    <div class="card stat-card">
+        <span class="text-secondary">Sources</span>
+        <span class="stat-value">4</span>
+    </div>
+    <div class="card stat-card">
+        <span class="text-secondary">This Month</span>
+        <span class="stat-value">৳ 4,500.00</span>
+    </div>
+</div>
+
+<div class="table-card">
+    <table class="spendwise-table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Source</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="5">
+                <div class="empty-state">
+                    <span data-lucide="wallet" style="font-size: 32px; color: var(--color-text-muted);"></span>
+                    <h4>No income records yet</h4>
+                    <p class="text-muted">Add your part-time job, scholarship, or allowance income.</p>
+                    <a th:href="@{/income/add}" class="btn btn-primary" style="margin-top: 16px;">Add Income</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</th:block>
+
+</body>
+</html>

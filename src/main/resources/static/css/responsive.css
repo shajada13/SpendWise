@@ -1,0 +1,85 @@
+/* =========================================================
+   SpendWise - Responsive Design
+   Desktop First: Desktop -> Laptop -> Tablet -> Mobile
+   ========================================================= */
+
+/* ---------- Laptop (<=1280px) ---------- */
+@media (max-width: 1280px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .widgets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Tablet (<=1024px) ---------- */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .widgets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-area {
+    padding: var(--space-5);
+  }
+}
+
+/* ---------- Small Tablet / Large Mobile (<=768px) ---------- */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .topbar-search {
+    display: none;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-card {
+    padding: var(--space-5);
+  }
+}
+
+/* ---------- Mobile (<=480px) ---------- */
+@media (max-width: 480px) {
+  .content-area {
+    padding: var(--space-4);
+  }
+
+  .topbar {
+    padding: 0 var(--space-4);
+  }
+
+  .user-menu .user-name,
+  .user-menu .user-role {
+    display: none;
+  }
+
+  .social-login {
+    flex-direction: column;
+  }
+}

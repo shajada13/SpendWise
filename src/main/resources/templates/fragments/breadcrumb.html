@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--
+  Usage:
+  th:replace="~{fragments/breadcrumb :: breadcrumb('Dashboard', 'Expenses')}"
+-->
+<nav th:fragment="breadcrumb(parent, current)" class="breadcrumb">
+    <a th:href="@{/dashboard}" th:text="${parent}">Dashboard</a>
+    <span>/</span>
+    <span class="current" th:text="${current}">Current Page</span>
+</nav>
+
+</body>
+</html>

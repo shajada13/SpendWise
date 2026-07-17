@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main :: layout(~{::content}, 'profile', 'Profile')}">
+<body>
+
+<th:block th:fragment="content">
+
+<div th:replace="~{fragments/breadcrumb :: breadcrumb('Dashboard', 'Profile')}"></div>
+
+<div class="card" style="max-width: 640px;">
+
+    <div class="d-flex align-center gap-4" style="margin-bottom: 24px;">
+        <img src="/images/avatars/default-avatar.svg" th:src="@{/images/avatars/default-avatar.svg}"
+             alt="Avatar" style="width:80px;height:80px;border-radius:50%;object-fit:cover;"/>
+        <div>
+            <h3>Ahik Rahman</h3>
+            <p class="text-muted">Student</p>
+        </div>
+        <button class="btn btn-secondary" style="margin-left:auto;">Edit Profile</button>
+    </div>
+
+    <div class="widgets-grid" style="grid-template-columns: repeat(2,1fr);">
+        <div>
+            <label class="form-label text-muted">Student ID</label>
+            <p>2001034</p>
+        </div>
+        <div>
+            <label class="form-label text-muted">University</label>
+            <p>Daffodil International University</p>
+        </div>
+        <div>
+            <label class="form-label text-muted">Department</label>
+            <p>CSE</p>
+        </div>
+        <div>
+            <label class="form-label text-muted">Email</label>
+            <p>ahikrahman@email.com</p>
+        </div>
+        <div>
+            <label class="form-label text-muted">Phone</label>
+            <p>+880 1712-345678</p>
+        </div>
+    </div>
+
+</div>
+
+</th:block>
+
+</body>
+</html>

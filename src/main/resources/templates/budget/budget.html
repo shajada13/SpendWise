@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main :: layout(~{::content}, 'budget', 'Budget')}">
+<body>
+
+<th:block th:fragment="content">
+
+<div th:replace="~{fragments/breadcrumb :: breadcrumb('Dashboard', 'Budget')}"></div>
+
+<div class="dashboard-header">
+    <h2>Budget</h2>
+    <button class="btn btn-primary"><span data-lucide="edit"></span> Edit Budget</button>
+</div>
+
+<div class="charts-grid">
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Monthly Budget</h4>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; padding: 24px 0;">
+            <canvas id="budgetDonutChart" width="220" height="220"></canvas>
+        </div>
+        <div style="text-align:center;">
+            <span class="stat-value">৳ 13,000.00</span>
+            <p class="text-muted">58% used</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Budget by Category</h4>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+            <div class="d-flex justify-between"><span>Food & Drinks</span><span class="text-muted">65%</span></div>
+            <div class="progress-track" style="margin-top: 6px;"><div class="progress-fill" style="width:65%;"></div></div>
+        </div>
+        <div style="margin-bottom: 16px;">
+            <div class="d-flex justify-between"><span>Transport</span><span class="text-muted">45%</span></div>
+            <div class="progress-track" style="margin-top: 6px;"><div class="progress-fill success" style="width:45%;"></div></div>
+        </div>
+        <div style="margin-bottom: 16px;">
+            <div class="d-flex justify-between"><span>Education</span><span class="text-muted">70%</span></div>
+            <div class="progress-track" style="margin-top: 6px;"><div class="progress-fill warning" style="width:70%;"></div></div>
+        </div>
+        <div>
+            <div class="d-flex justify-between"><span>Shopping</span><span class="text-muted">30%</span></div>
+            <div class="progress-track" style="margin-top: 6px;"><div class="progress-fill danger" style="width:30%;"></div></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="widgets-grid" style="grid-template-columns: repeat(3,1fr);">
+    <div class="card stat-card">
+        <span class="text-secondary">Spent</span>
+        <span class="stat-value">৳ 7,540.00</span>
+    </div>
+    <div class="card stat-card">
+        <span class="text-secondary">Remaining</span>
+        <span class="stat-value">৳ 5,460.00</span>
+    </div>
+    <div class="card stat-card">
+        <span class="text-secondary">Days Left</span>
+        <span class="stat-value">12</span>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Chart === 'undefined') { return; }
+        new Chart(document.getElementById('budgetDonutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Spent', 'Remaining'],
+                datasets: [{ data: [58, 42], backgroundColor: ['#2563EB', '#E5E7EB'] }]
+            },
+            options: { cutout: '75%', plugins: { legend: { display: false } } }
+        });
+    });
+    /*]]>*/
+</script>
+
+</th:block>
+
+</body>
+</html>
